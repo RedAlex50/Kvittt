@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block title %}Главная страница{% endblock %}
+
+{% block main %}
+{% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/main/main.css' %}">
+
+    <div class="nav_bar">
+        <div class="h-4"><a class="nav_link" href="/">Главная</a></div>
+        <div class="h-4"><a class="nav_link" href="/blog">Блог</a></div>
+        <div class="h-4"><a class="nav_link" href="/cases">Кейсы</a></div>
+    </div>
+    {% if user.is_authenticated  %}
+    
+    <div class="content">
+        <div class="header">
+            <div class="header_img">
+                <img src="{% static 'img/nikitos.jpg' %}" alt="" height="500px" style="border-radius: 250px;">
+            </div>
+            <div class="h-1">НИКИТОСИК</div>
+            <div class="h-2 mb_60">SMM-специалист, копирайтер, контент-менеджер</div>
+            <div class="text_32">Следует отметить, что реализация намеченных плановых заданий обеспечивает широкому кругу специалистов модели развития.</div>
+        </div>
+
+        <div class="about_me">
+            <div class="h-3">Обо мне</div>
+            <div class="text_32">Разнообразный и богатый опыт социально-экономическое развитие представляет собой интересный эксперимент прогресса профессионального общества. Для современного мира курс на социально-ориентированный национальный проект способствует повышению качества поэтапного и последовательного развития общества. Не вызывает сомнений, что курс на социально-ориентированный национальный проект позволяет выполнять важные задания по разработке укрепления демократической системы.</div>
+        </div>
+
+        <div class="contacts">
+            <div class="h-3">Контакты</div>
+            <div class="text_32">kvitkonickitka@gmail.com</div>
+            <div class="text_32">+79995674812</div>
+            <div class="contacts_links">
+                <a href="https://t.me/NikitaKvitko" style="text-decoration: none;">
+                    <img src="{% static 'img/telegram.png' %}" alt="" height="70px">
+                </a>
+                <a href="https://vk.com/nikita_kvitko" style="text-decoration: none;">
+                    <img src="{% static 'img/vk.png' %}" alt="" height="70px">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    {% else %}
+
+    <div class="content">
+        <div class="header">
+            <div class="header_img">
+                <img src="{% static 'img/nikitos.jpg' %}" alt="" height="500px" style="border-radius: 250px;">
+            </div>
+            <div class="h-1">НИКИТОСИК</div>
+            <div class="h-2 mb_60">SMM-специалист, копирайтер, контент-менеджер</div>
+            <div class="text_32">Следует отметить, что реализация намеченных плановых заданий обеспечивает широкому кругу специалистов модели развития.</div>
+        </div>
+
+        <div class="about_me">
+            <div class="h-3">Обо мне</div>
+            <div class="text_32">Разнообразный и богатый опыт социально-экономическое развитие представляет собой интересный эксперимент прогресса профессионального общества. Для современного мира курс на социально-ориентированный национальный проект способствует повышению качества поэтапного и последовательного развития общества. Не вызывает сомнений, что курс на социально-ориентированный национальный проект позволяет выполнять важные задания по разработке укрепления демократической системы.</div>
+        </div>
+
+        <div class="contacts">
+            <div class="h-3">Контакты</div>
+            <div class="text_32">kvitkonickitka@gmail.com</div>
+            <div class="text_32">+79995674812</div>
+            <div class="contacts_links">
+                <a href="t.me/NikitaKvitko" style="text-decoration: none;">
+                    <img src="{% static 'img/telegram.png' %}" alt="" height="70px">
+                </a>
+                <a href="https://vk.com/nikita_kvitko" style="text-decoration: none;">
+                    <img src="{% static 'img/vk.png' %}" alt="" height="70px">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    {% endif %}
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="{% static 'js/main/main.js' %}"></script>
+
+{% endblock %}

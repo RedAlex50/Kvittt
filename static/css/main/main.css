@@ -1,0 +1,43 @@
+.content {
+    width: 60%;
+}
+
+.nav_bar{
+    position: absolute;
+    left: 82%;
+    top: 64%;
+}
+
+.nav_link{ 
+    text-decoration: none;
+    color: #222222;
+    padding: 10%;
+}
+
+.nav_link:hover{
+    padding-left: 30%;
+    transition: 0.3s;    
+}
+
+.header_img {
+    margin-top: 50px;
+    margin-bottom: 80px;
+}
+
+.header {
+    margin-top: 20px;
+    margin-bottom: 140px;
+}
+
+.about_me {
+    margin-top: 40px;
+    margin-bottom: 170px;
+}
+
+.contacts_links{
+    margin-top: 20px;
+}
+
+.contacts_links a{
+    margin: 20px;
+}

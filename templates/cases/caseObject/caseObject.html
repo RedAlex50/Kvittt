@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %}Конкретный кейс{% endblock %}
+
+{% block main %}
+{% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/cases/cases.css' %}">
+
+    
+
+    <!-- {% if user.is_authenticated  %}
+    
+    {% else %}
+
+    {% endif %} -->
+
+    {% for el in data %}
+    <form enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        <p><input type="file" name="img">
+        <input type="submit" value="Отправить"></p>
+       </form> 
+    
+        <!-- {% autoescape off %}{{ el.description | linebreaks }}{% endautoescape %} -->
+    {% endfor %}
+    
+    {% for obj in caseBlocks %}
+
+        {% if obj.type == 1 %}
+            {{ obj.text }}
+        {% endif %}
+        
+        {% if obj.type == 2 %}
+            <img src="/media/{{ obj.img_1 }}" style="width: 100px; height: 100px;">
+        {% endif %}
+
+        {% if obj.type == 3 %}
+
+            {% if obj.img_1 != "" %}
+                <img src="/media/{{ obj.img_1 }}" style="width: 100px; height: 100px;">
+            {% endif %}
+
+            {% if obj.img_2 != "" %}
+                <img src="/media/{{ obj.img_2 }}" style="width: 100px; height: 100px;">
+            {% endif %}
+
+            {% if obj.img_3 != "" %}
+                <img src="/media/{{ obj.img_3 }}" style="width: 100px; height: 100px;">
+            {% endif %}
+
+            {% if obj.img_4 != "" %}
+                <img src="/media/{{ obj.img_4 }}" style="width: 100px; height: 100px;">
+            {% endif %}
+
+            {% if obj.img_5 != "" %}
+                <img src="/media/{{ obj.img_5 }}" style="width: 100px; height: 100px;">
+            {% endif %}
+
+        {% endif %}
+        
+    {% endfor %}
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="{% static 'js/cases/cases.js' %}"></script>
+
+{% endblock %}
