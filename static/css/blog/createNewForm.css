@@ -1,0 +1,16 @@
+form{
+    margin-left: 32%;
+    width: 500px;
+    margin-top: 50px;
+}
+
+.form-control{
+    width: 500px;
+    margin: 10px;
+    height: 30px;
+    align-items: center;
+}
+
+.text-area{
+    height: 200px;
+}

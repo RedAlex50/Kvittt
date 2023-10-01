@@ -3,6 +3,9 @@ from django.views.generic.base import View
 from django.http import HttpResponse
 from .models import Case, CaseBlock, New
 from transliterate import translit, get_available_language_codes
+from .forms import NewForm
+from pathlib import Path
+import os
 
 class Main(View):
     def get(self, request):
@@ -25,7 +28,6 @@ class Cases(View):
 class Blog(View):
     def get(self, request):
         news = New.objects.all()
-
         data = {
             'news': news,
         }
@@ -85,3 +87,49 @@ class CasePage(View):
             'caseBlocks': caseBlocks
         }
         return render(request, "cases/caseObject/caseObject.html", context=context)
+    
+class CreateNew(View):
+    def get(self, request):
+        error = ''
+        if request.method == 'POST':
+            form = NewForm(request.POST, request.FILES)
+            if form.is_valid():
+                form.save()
+                print(str (form.cleaned_data['img_1']))
+                print(str (form.cleaned_data['img_2']))
+                print(str (form.cleaned_data['img_3']))
+                print(str (form.cleaned_data['img_4']))
+                print(str (form.cleaned_data['img_5']))
+                return redirect('blog')
+            else:
+                error = "Форма заполнена некорректно!"
+
+        form = NewForm()
+
+        data = {
+            'form': form,
+            'error': error,
+        }
+        return render(request, "blog/createNewForm/createNewForm.html", data)
+    def post(self, request):
+        error = ''
+        if request.method == 'POST':
+            form = NewForm(request.POST, request.FILES)
+            if form.is_valid():
+                form.save()
+                print(str (form.cleaned_data['img_1']))
+                print(str (form.cleaned_data['img_2']))
+                print(str (form.cleaned_data['img_3']))
+                print(str (form.cleaned_data['img_4']))
+                print(str (form.cleaned_data['img_5']))
+                return redirect('blog')
+            else:
+                error = "Форма заполнена некорректно!"
+
+        form = NewForm()
+
+        data = {
+            'form': form,
+            'error': error,
+        }
+        return render(request, "blog/createNewForm/createNewForm.html", data)

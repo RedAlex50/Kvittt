@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}Создание новости{% endblock %}
+
+{% block main %}
+{% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/blog/createNewForm.css' %}">
+
+    {% if user.is_authenticated  %}
+
+    <div class="content">
+        <div class="page_header h-1">Создание новости</div>
+        <div class="page_links">
+            <a href="{% url 'main' %}">Главная страница</a>
+            <span class="page_arrow">=></span>
+            <a href="{% url 'blog' %}">Блог</a>
+            <span class="page_arrow">=></span>
+            <a href="{% url 'createNewForm' %}">Добавление новости</a>
+        </div>
+    </div>
+
+    <form enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+
+        {% if form.errors %}
+            {{ form.errors }}
+        {% endif %}
+
+        {{ form.title }}</br>
+        {{ form.date }}</br>
+        {{ form.img_1 }}</br>
+        {{ form.img_2 }}</br>
+        {{ form.img_3 }}</br>
+        {{ form.img_4 }}</br>
+        {{ form.img_5 }}</br>
+        {{ form.text }}</br>
+        <h3>{{ error }}</h3></br>
+        <button class="" type="submit">Создать</button>
+    </form>
+
+    {% else %}  
+
+    {% endif %}
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="{% static 'js/blog/blog.js' %}"></script>
+
+{% endblock %}
