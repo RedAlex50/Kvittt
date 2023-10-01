@@ -7,17 +7,12 @@
 
     <link rel="stylesheet" href="{% static 'css/main/main.css' %}">
 
-    <div class="nav_bar">
-        <div class="h-4"><a class="nav_link" href="/">Главная</a></div>
-        <div class="h-4"><a class="nav_link" href="/blog">Блог</a></div>
-        <div class="h-4"><a class="nav_link" href="/cases">Кейсы</a></div>
-    </div>
     {% if user.is_authenticated  %}
     
     <div class="content">
         <div class="header">
             <div class="header_img">
-                <img src="{% static 'img/nikitos.jpg' %}" alt="" height="500px" style="border-radius: 250px;">
+                <img src="{% static 'img/nikitos.jpg' %}" class="img_main">
             </div>
             <div class="h-1">НИКИТОСИК</div>
             <div class="h-2 mb_60">SMM-специалист, копирайтер, контент-менеджер</div>
@@ -26,7 +21,13 @@
 
         <div class="about_me">
             <div class="h-3">Обо мне</div>
-            <div class="text_32">Разнообразный и богатый опыт социально-экономическое развитие представляет собой интересный эксперимент прогресса профессионального общества. Для современного мира курс на социально-ориентированный национальный проект способствует повышению качества поэтапного и последовательного развития общества. Не вызывает сомнений, что курс на социально-ориентированный национальный проект позволяет выполнять важные задания по разработке укрепления демократической системы.</div>
+            <div class="text_32 text_16_mob">Разнообразный и богатый опыт социально-экономическое развитие представляет собой интересный эксперимент прогресса профессионального общества. Для современного мира курс на социально-ориентированный национальный проект способствует повышению качества поэтапного и последовательного развития общества. Не вызывает сомнений, что курс на социально-ориентированный национальный проект позволяет выполнять важные задания по разработке укрепления демократической системы.</div>
+        </div>
+
+        <div class="nav_bar">
+            <div class="h-4"><a class="nav_link" href="/">Главная</a></div>
+            <div class="h-4"><a class="nav_link" href="/blog">Блог</a></div>
+            <div class="h-4"><a class="nav_link" href="/cases">Кейсы</a></div>
         </div>
 
         <div class="contacts">
@@ -35,10 +36,10 @@
             <div class="text_32">+79995674812</div>
             <div class="contacts_links">
                 <a href="https://t.me/NikitaKvitko" style="text-decoration: none;">
-                    <img src="{% static 'img/telegram.png' %}" alt="" height="70px">
+                    <img src="{% static 'img/telegram.png' %}" alt="">
                 </a>
                 <a href="https://vk.com/nikita_kvitko" style="text-decoration: none;">
-                    <img src="{% static 'img/vk.png' %}" alt="" height="70px">
+                    <img src="{% static 'img/vk.png' %}" alt="">
                 </a>
             </div>
         </div>

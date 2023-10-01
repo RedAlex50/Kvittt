@@ -24,6 +24,11 @@
     margin-bottom: 80px;
 }
 
+.img_main{
+    height: 500px;
+    border-radius: 250px;
+}
+
 .header {
     margin-top: 20px;
     margin-bottom: 140px;
@@ -40,4 +45,57 @@
 
 .contacts_links a{
     margin: 20px;
+}
+
+.contacts_links a img{
+    height: 70px;
+}
+
+
+@media (max-width: 1000px) {
+
+    .content {
+        width: 100%;
+        margin: 0;
+    }
+    .header {
+        text-align: center;
+        margin: 0 5%;
+    }
+
+    .header_img {
+        margin-top: 50px;
+        margin-bottom: 30px;
+    }
+
+    .img_main{
+        width: 80%;
+        height: 80%;
+        border-radius: 50%;
+        margin-left: auto;
+    }
+
+    .nav_bar{
+        position: relative;
+        left: 0%;
+        top: 0%;
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .nav_link{
+        padding: 0%;
+    }
+
+    .about_me{
+        margin: 50px 5%;
+    }
+
+    .contacts{
+        margin: 0 5%;
+    }
+
+    .contacts_links a img{
+        height: 50px;
+    }
 }
