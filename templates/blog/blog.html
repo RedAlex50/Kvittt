@@ -11,68 +11,55 @@
         <div class="page_header h-1">Блог</div>
         <div class="page_links">
             <a href="/">Главная страница</a>
-            <span class="page_arrow">=></span>
+            <span class="page_arrow">→</span>
             <a href="/cases">блог</a>
         </div>
+<!-- 
+    {% if user.is_authenticated  %} -->
 
-    {% if user.is_authenticated  %}
+        <div class="blogs">
+            {% for obj in news %}
+                <div class="blog_page">
+                    <div class="blog_img">
+                        {% if obj.img_1 != "" %}
+                            <img src="/media/{{ obj.img_1 }}">
+                        {% endif %}
+                        {% if obj.img_2 != "" %}
+                            <img src="/media/{{ obj.img_2 }}">
+                        {% endif %}
+                        {% if obj.img_3 != "" %}
+                            <img src="/media/{{ obj.img_3 }}">
+                        {% endif %}
+                        {% if obj.img_4 != "" %}
+                            <img src="/media/{{ obj.img_4 }}">
+                        {% endif %}
+                        {% if obj.img_5 != "" %}
+                            <img src="/media/{{ obj.img_5 }}">
+                        {% endif %}
+                    </div>
+                    <div class="blog_header">
+                        {{ obj.title }}
+                    </div>
+            
+                    <div class="blog_text">
+                        {{ obj.text }}
+                    </div>
+            
+                    <div class="blog_date">
+                        {{ obj.date }}
+                    </div>
+                </div>
+                <hr width="500" align="left" size="0" style="border: 2px solid #222222; border-radius: 3px;">
+            {% endfor %}
+        </div>
 
-        {% for obj in news %}
-            <div class="blog_page">
-                <div class="blog_img">
-                    {% if obj.img_1 != "" %}
-                        <img src="/media/{{ obj.img_1 }}">
-                    {% endif %}
-                    {% if obj.img_2 != "" %}
-                        <img src="/media/{{ obj.img_2 }}">
-                    {% endif %}
-                    {% if obj.img_3 != "" %}
-                        <img src="/media/{{ obj.img_3 }}">
-                    {% endif %}
-                    {% if obj.img_4 != "" %}
-                        <img src="/media/{{ obj.img_4 }}">
-                    {% endif %}
-                    {% if obj.img_5 != "" %}
-                        <img src="/media/{{ obj.img_5 }}">
-                    {% endif %}
-                </div>
-
-                <div class="blog_header">
-                    {{ obj.title }}
-                </div>   
-                
-                <div class="blog_text">
-                    {{ obj.text }}
-                </div>
-                
-                <div class="blog_date">
-                    {{ obj.date }}
-                </div>
-            </div>
-            <hr width="500" align="left" size="0" style="border: 2px solid #222222; border-radius: 3px;">
-        {% endfor %}
-    
-        <!-- <div class="blog_page">
-            <div class="blog_img">
-                <img src="https://placehold.co/600x400" alt="">
-            </div>
-            <div class="blog_header">
-                Какой-то заголовок
-            </div>
-            <div class="blog_text">
-                Прежде всего постоянное информационно-пропогандистское обеспечение нашей деятельности создаёт предпосылки качественно новых шагов для позиции, занимаемых участниками в отношении поставленных задач. Для современного мира выбранный нами инновационный путь влечёт за собой интересный процесс внедрения модернизации позиции, занимаемых участниками в отношении поставленных задач. Задача организации, в особенности же социально-экономическое развитие требует анализа укрепления демократической системы. Идейные соображения высшего порядка, а также высокотехнологичная концепция общественной системы требует от нас анализа новых принципов формирования материально-технической и кадровой базы. Следует отметить, что постоянное информационно-пропогандистское обеспечение нашей деятельности представляет собой интересный эксперимент существующий финансовых и административных условий. Значимость этих проблем настолько очевидна, что социально-экономическое развитие влечёт за собой интересный процесс внедрения модернизации системы обучения кадров, соответствующей насущным потребностям. Идейные соображения высшего порядка, а также консультация с широким активом обеспечивает актуальность поставленных обществом и правительством задач. Разнообразный и богатый опыт высокотехнологичная концепция общественной системы представляет собой интересный эксперимент новых принципов формирования материально-технической и кадровой базы. Разнообразный и богатый опыт рамки и место обучения кадров обеспечивает актуальность дальнейших направлений развития. Таким образом выбранный нами инновационный путь играет важную роль в формировании позиции, занимаемых участниками в отношении поставленных задач.
-            </div>
-            <div class="blog_date">
-                45 июньгуст 2077
-            </div>
-        </div> -->
     </div>
 
-    {% else %}
+    <!-- {% else %}
 
-    
+     -->
 
-    {% endif %}
+    <!-- {% endif %} -->
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <script src="{% static 'js/blog/blog.js' %}"></script>

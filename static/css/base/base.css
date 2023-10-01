@@ -159,4 +159,12 @@ body {
     .mb_60 {
         margin-bottom: 20px;
     }
+    
+    .page_header{
+        margin: 50px 3%;
+    }
+
+    .page_links{
+        margin: 20px 3% ;
+    }
 }
