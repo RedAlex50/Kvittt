@@ -29,11 +29,15 @@
 
         {{ form.title }}</br>
         {{ form.date }}</br>
-        {{ form.img_1 }}</br>
+        {{ form.img_1 }}</br>        
         {{ form.img_2 }}</br>
+        <button type="button" onclick="addImg_2()" id="img_btn_2">Добавить изображение</button>
         {{ form.img_3 }}</br>
+        <button type="button" onclick="addImg_3()" id="img_btn_3" style="display: none;">Добавить изображение</button>
         {{ form.img_4 }}</br>
+        <button type="button" onclick="addImg_4()" id="img_btn_4" style="display: none;">Добавить изображение</button>
         {{ form.img_5 }}</br>
+        <button type="button" onclick="addImg_5()" id="img_btn_5" style="display: none;">Добавить изображение</button>
         {{ form.text }}</br>
         <h3>{{ error }}</h3></br>
         <button class="" type="submit">Создать</button>
@@ -44,6 +48,6 @@
     {% endif %}
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <script src="{% static 'js/blog/blog.js' %}"></script>
+    <script src="{% static 'js/blog/createNewForm.js' %}"></script>
 
 {% endblock %}
