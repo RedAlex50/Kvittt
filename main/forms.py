@@ -13,7 +13,8 @@ class NewForm(ModelForm):
             }),
              'text': Textarea(attrs={
                 'class': 'form-control text-area',
-                'placeholder': 'Текст новости'
+                'placeholder': 'Текст новости',
+                'id': 'text',
             }),
             'img_1': FileInput(
                 attrs={
