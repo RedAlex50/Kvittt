@@ -22,8 +22,6 @@
             <span class="page_arrow">→</span>
             <a href="/cases">блог</a>
         </div>
-<!-- 
-    {% if user.is_authenticated  %} -->
 
         <div class="blogs">
             {% for obj in news %}
@@ -63,11 +61,11 @@
 
     </div>
 
-    <!-- {% else %}
+    {% else %}
 
-     -->
+    
 
-    <!-- {% endif %} -->
+    {% endif %}
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <script src="{% static 'js/blog/blog.js' %}"></script>

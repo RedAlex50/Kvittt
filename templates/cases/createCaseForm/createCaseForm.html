@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Создание новости{% endblock %}
+{% block title %}Создание кейса{% endblock %}
 
 {% block main %}
 {% load static %}
@@ -10,12 +10,12 @@
     {% if user.is_authenticated  %}
 
     <div class="content">
-        <div class="page_header h-1">Создание новости</div>
+        <div class="page_header h-1">Создание кейса</div>
         <div class="page_links">
             <a href="{% url 'main' %}">Главная страница</a>
-            <span class="page_arrow">=></span>
-            <a href="{% url 'cases' %}">Блог</a>
-            <span class="page_arrow">=></span>
+            <span class="page_arrow">→</span>
+            <a href="{% url 'cases' %}">Кейсы</a>
+            <span class="page_arrow">→</span>
             <a href="{% url 'createCaseForm' %}">Добавление кейса</a>
         </div>
     </div>
@@ -27,9 +27,18 @@
             {{ form.errors }}
         {% endif %}
 
-        {{ form.title }}</br>
-        {{ form.img }}</br>
-        {{ form.description }}</br>
+        <div class="form_title text_32">
+            Название кейса: <br>
+            {{ form.title }}
+        </div>
+        <div class="form_imgs text_32">
+            Превью кейса: <br>
+            {{ form.img }}
+        </div>
+        <div class="form_text text_32">
+            Текст кейса: <br>
+            {{ form.description }}
+        </div>
 
         <h3>{{ error }}</h3></br>
         <button class="" type="submit">Создать</button>

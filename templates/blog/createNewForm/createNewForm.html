@@ -13,9 +13,9 @@
         <div class="page_header h-1">Создание новости</div>
         <div class="page_links">
             <a href="{% url 'main' %}">Главная страница</a>
-            <span class="page_arrow">=></span>
+            <span class="page_arrow">→</span>
             <a href="{% url 'blog' %}">Блог</a>
-            <span class="page_arrow">=></span>
+            <span class="page_arrow">→</span>
             <a href="{% url 'createNewForm' %}">Добавление новости</a>
         </div>
     </div>
@@ -27,23 +27,35 @@
             {{ form.errors }}
         {% endif %}
 
-        {{ form.title }}</br>
-        {{ form.date }}</br>
-        {{ form.img_1 }}</br>        
-        {{ form.img_2 }}</br>
-        <button type="button" onclick="addImg_2()" id="img_btn_2">Добавить изображение</button>
-        {{ form.img_3 }}</br>
-        <button type="button" onclick="addImg_3()" id="img_btn_3" style="display: none;">Добавить изображение</button>
-        {{ form.img_4 }}</br>
-        <button type="button" onclick="addImg_4()" id="img_btn_4" style="display: none;">Добавить изображение</button>
-        {{ form.img_5 }}</br>
-        <button type="button" onclick="addImg_5()" id="img_btn_5" style="display: none;">Добавить изображение</button>
-        {{ form.text }}</br>
+
+        <div class="form_title text_32">
+            Заголовок новости: <br>
+            {{ form.title }}
+            {{ form.date }}</br>
+        </div>
+        <div class="form_imgs text_32">
+            Изображения: <br>
+            {{ form.img_1 }}        
+            {{ form.img_2 }}
+            <button type="button" onclick="addImg_2()" id="img_btn_2">Добавить изображение</button>
+            {{ form.img_3 }}
+            <button type="button" onclick="addImg_3()" id="img_btn_3" style="display: none;">Добавить изображение</button>
+            {{ form.img_4 }}
+            <button type="button" onclick="addImg_4()" id="img_btn_4" style="display: none;">Добавить изображение</button>
+            {{ form.img_5 }}
+            <button type="button" onclick="addImg_5()" id="img_btn_5" style="display: none;">Добавить изображение</button>
+            <br><button type="button" onclick="proverka()">Вставить последнее изображение</button>
+        </div>
+        <div class="form_text text_32">
+            Текст новости: <br>
+            {{ form.text }}
+        </div>
+
+
         <h3>{{ error }}</h3></br>
         <button class="" type="submit">Создать</button>
     </form>
 
-    <button type="button" onclick="proverka()">Проверка</button>
 
     {% else %}  
 
