@@ -46,3 +46,12 @@
     font-weight: 600;
     line-height: 20px;
 }
+
+
+@media (max-width: 1000px) {
+
+    .cases_card{
+        margin: 30px auto;
+    }
+
+}
