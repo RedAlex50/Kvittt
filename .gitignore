@@ -2,3 +2,4 @@ __pycache__/
 /db.sqlite3
 KvitkoVisit/__pycache__/
 main/__pycache__/
+media/
