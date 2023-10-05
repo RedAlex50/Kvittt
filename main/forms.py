@@ -1,8 +1,5 @@
 from django.forms import ModelForm, TextInput, DateTimeInput, Textarea, FileInput
 from .models import *
-from django.utils.timezone import localdate
-
-today = localdate()
 
 class NewForm(ModelForm):
     class Meta:
@@ -56,8 +53,11 @@ class NewForm(ModelForm):
         }
     def __init__(self, *args, **kwargs):
         super(NewForm, self).__init__(*args, **kwargs)
-        # self.fields['img_1'].required = False
-        # self.fields['img_2'].required = False
-        # self.fields['img_3'].required = False
-        # self.fields['img_4'].required = False
-        # self.fields['img_5'].required = False
+
+class CaseForm(ModelForm):
+    class Meta:
+        model = Case
+        fields = ['title', 'img', 'description']
+
+    def __init__(self, *args, **kwargs):
+        super(CaseForm, self).__init__(*args, **kwargs)

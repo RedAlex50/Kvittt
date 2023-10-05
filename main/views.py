@@ -3,7 +3,7 @@ from django.views.generic.base import View
 from django.http import HttpResponse
 from .models import Case, CaseBlock, New
 from transliterate import translit, get_available_language_codes
-from .forms import NewForm
+from .forms import NewForm, CaseForm
 from pathlib import Path
 import os
 
@@ -95,11 +95,6 @@ class CreateNew(View):
             form = NewForm(request.POST, request.FILES)
             if form.is_valid():
                 form.save()
-                print(str (form.cleaned_data['img_1']))
-                print(str (form.cleaned_data['img_2']))
-                print(str (form.cleaned_data['img_3']))
-                print(str (form.cleaned_data['img_4']))
-                print(str (form.cleaned_data['img_5']))
                 return redirect('blog')
             else:
                 error = "Форма заполнена некорректно!"
@@ -117,11 +112,6 @@ class CreateNew(View):
             form = NewForm(request.POST, request.FILES)
             if form.is_valid():
                 form.save()
-                print(str (form.cleaned_data['img_1']))
-                print(str (form.cleaned_data['img_2']))
-                print(str (form.cleaned_data['img_3']))
-                print(str (form.cleaned_data['img_4']))
-                print(str (form.cleaned_data['img_5']))
                 return redirect('blog')
             else:
                 error = "Форма заполнена некорректно!"
@@ -133,3 +123,39 @@ class CreateNew(View):
             'error': error,
         }
         return render(request, "blog/createNewForm/createNewForm.html", data)
+    
+class CreateCase(View):
+    def get(self, request):
+        error = ''
+        if request.method == 'POST':
+            form = CaseForm(request.POST, request.FILES)
+            if form.is_valid():
+                form.save()
+                return redirect('cases')
+            else:
+                error = "Форма заполнена некорректно!"
+
+        form = CaseForm()
+
+        data = {
+            'form': form,
+            'error': error,
+        }
+        return render(request, "cases/createCaseForm/createCaseForm.html", data)
+    def post(self, request):
+        error = ''
+        if request.method == 'POST':
+            form = CaseForm(request.POST, request.FILES)
+            if form.is_valid():
+                form.save()
+                return redirect('cases')
+            else:
+                error = "Форма заполнена некорректно!"
+
+        form = CaseForm()
+
+        data = {
+            'form': form,
+            'error': error,
+        }
+        return render(request, "cases/createCaseForm/createCaseForm.html", data)
