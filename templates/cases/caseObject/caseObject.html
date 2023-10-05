@@ -16,16 +16,18 @@
     {% endif %} -->
 
     {% for el in data %}
-    <form enctype="multipart/form-data" method="post">
+
+        <!-- <form enctype="multipart/form-data" method="post">
         {% csrf_token %}
         <p><input type="file" name="img">
         <input type="submit" value="Отправить"></p>
-       </form> 
+       </form>  -->
     
-        <!-- {% autoescape off %}{{ el.description | linebreaks }}{% endautoescape %} -->
+        <div>{% autoescape off %}{{ el.description | linebreaks }}{% endautoescape %}</div>
+
     {% endfor %}
     
-    {% for obj in caseBlocks %}
+    <!-- {% for obj in caseBlocks %}
 
         {% if obj.type == 1 %}
             {{ obj.text }}
@@ -59,7 +61,7 @@
 
         {% endif %}
         
-    {% endfor %}
+    {% endfor %} -->
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <script src="{% static 'js/cases/cases.js' %}"></script>
