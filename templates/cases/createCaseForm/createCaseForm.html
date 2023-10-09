@@ -14,11 +14,13 @@
         <div class="page_links">
             <a href="{% url 'main' %}">Главная страница</a>
             <span class="page_arrow">=></span>
-            <a href="{% url 'cases' %}">Блог</a>
+            <a href="{% url 'cases' %}">Кейсы</a>
             <span class="page_arrow">=></span>
             <a href="{% url 'createCaseForm' %}">Добавление кейса</a>
         </div>
     </div>
+
+    
 
     <form enctype="multipart/form-data" method="post">
         {% csrf_token %}
@@ -28,11 +30,20 @@
         {% endif %}
 
         {{ form.title }}</br>
+        <div>{{ titleError }}</div>
         {{ form.img }}</br>
         {{ form.description }}</br>
-
+        <div id="addImg" style="width: 100%; height: auto; background-color: blue; display: none;">
+            {{ form.img_1 }}
+            {{ form.img_2 }}
+            {{ form.img_3 }}
+            {{ form.img_4 }}
+            {{ form.img_5 }}
+            <button type="button" onclick="addImg()" style="margin-left: 45%;">Ок</button>
+        </div>
+        <button type="button" onclick="showAddImg()">Добавить картинку</button>
         <h3>{{ error }}</h3></br>
-        <button class="" type="submit">Создать</button>
+        <button type="submit">Создать</button>
     </form>
 
     {% else %}  
@@ -40,6 +51,6 @@
     {% endif %}
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <script src="{% static 'js/blog/createNewForm.js' %}"></script>
+    <script src="{% static 'js/cases/createCaseForm/createCaseForm.js' %}"></script>
 
 {% endblock %}

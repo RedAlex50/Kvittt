@@ -128,7 +128,7 @@ class CreateCase(View):
     def get(self, request):
         error = ''
         if request.method == 'POST':
-            form = CaseForm(request.POST, request.FILES)
+            form = CaseForm(request.POST, request.FILES)            
             if form.is_valid():
                 form.save()
                 return redirect('cases')
@@ -144,17 +144,22 @@ class CreateCase(View):
         return render(request, "cases/createCaseForm/createCaseForm.html", data)
     def post(self, request):
         error = ''
+        titleError = ''
         if request.method == 'POST':
             form = CaseForm(request.POST, request.FILES)
             if form.is_valid():
-                form.save()
-                return redirect('cases')
+                if ('/' in str(form.cleaned_data['title'])) | ('(' in str(form.cleaned_data['title'])) | (')' in str(form.cleaned_data['title'])) | ('*' in str(form.cleaned_data['title'])) | ('^' in str(form.cleaned_data['title'])) | ('/' in str(form.cleaned_data['title'])) | ('+' in str(form.cleaned_data['title'])):
+                    titleError = "Не используйте символы: /, (, ), *, ^, /, +"    
+                else:
+                    form.save()
+                    return redirect('cases')
             else:
                 error = "Форма заполнена некорректно!"
 
         form = CaseForm()
 
         data = {
+            'titleError': titleError,
             'form': form,
             'error': error,
         }
