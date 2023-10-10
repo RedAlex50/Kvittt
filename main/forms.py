@@ -58,7 +58,60 @@ class NewForm(ModelForm):
 class CaseForm(ModelForm):
     class Meta:
         model = Case
-        fields = ['title', 'img', 'description']
+        fields = ['title', 'img', 'description', 'img_1', 'img_2', 'img_3', 'img_4', 'img_5']
+
+        widgets = {
+            'title': TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Заголовок кейса'
+            }),
+            'img': FileInput(
+                attrs={
+                'class': 'form-control',
+                'placeholder': 'Обложка',
+                'style': 'display: block;',
+            }),
+             'description': Textarea(attrs={
+                'class': 'form-control text-area',
+                'placeholder': 'Наполнение',
+                'id': 'description',
+            }),
+            'img_1': FileInput(
+                attrs={
+                'class': 'form-control',
+                'placeholder': 'Изображение 1',
+                'id': 'img_1',
+                'style': 'display: block;',
+            }),
+            'img_2': FileInput(
+                attrs={
+                'class': 'form-control',
+                'placeholder': 'Изображение 2',
+                'id': 'img_2',
+                'style': 'display: none;',
+            }),
+            'img_3': FileInput(
+                attrs={
+                'class': 'form-control',
+                'placeholder': 'Изображение 3',
+                'id': 'img_3',
+                'style': 'display: none;',
+            }),
+            'img_4': FileInput(
+                attrs={
+                'class': 'form-control',
+                'placeholder': 'Изображение 4',
+                'id': 'img_4',
+                'style': 'display: none;',
+            }),
+            'img_5': FileInput(
+                attrs={
+                'class': 'form-control',
+                'placeholder': 'Изображение 5',
+                'id': 'img_5',
+                'style': 'display: none;',
+            }),
+        }
 
     def __init__(self, *args, **kwargs):
         super(CaseForm, self).__init__(*args, **kwargs)

@@ -20,10 +20,3 @@ function addImg_5(){
     document.getElementById('img_5').style.display  = "block";
     document.getElementById('img_btn_5').style.display  = "none";
 }
-function proverka(){
-    el = document.getElementById('img_1').value;
-    var a = el.split('\\')[2];
-    alert(a);
-    text = document.getElementById('text').value + '\n' + a;
-    document.getElementById('text').value = text;
-}

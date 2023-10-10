@@ -4,6 +4,11 @@ class Case(models.Model):
     title = models.CharField("Название", max_length=255, default='')
     img = models.ImageField("Обложка", upload_to='case')
     titleForURL = models.CharField("Преобразование в URL", max_length=255, default='', blank=True)
+    img_1 = models.ImageField("Изображение 1", upload_to='case', blank=True)
+    img_2 = models.ImageField("Изображение 2", upload_to='case', blank=True)
+    img_3 = models.ImageField("Изображение 3", upload_to='case', blank=True)
+    img_4 = models.ImageField("Изображение 4", upload_to='case', blank=True)
+    img_5 = models.ImageField("Изображение 5", upload_to='case', blank=True)
     description = models.TextField("Наполнение", blank=True)
 
     def __str__(self):
