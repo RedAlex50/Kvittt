@@ -61,6 +61,7 @@ class CasePage(View):
             'titleForURL': titleForURL,
             'data' : data,
             'caseBlocks': caseBlocks
+
         }
         return render(request, "cases/caseObject/caseObject.html", context=context)
     def post(self, request, id, titleForURL):

@@ -3,3 +3,4 @@ __pycache__/
 KvitkoVisit/__pycache__/
 main/__pycache__/
 media/
+main/migrations/__pycache__/
