@@ -29,10 +29,15 @@
                 <div class="cases_title">
                     <div id="{{ obj.id }}">{{ obj.title }}</div>   
                 </div>
-            </a>    
-        {% endfor %}
+            </a>
+
+            <form action="{% url 'delete_case' id=obj.id %}" method="post">
+                {% csrf_token %}
+                <button class="btn" type="submit" >Удалить</button>
+            </form>
+            {% endfor %}
+        </div>
     </div>
-</div>
 
 
 

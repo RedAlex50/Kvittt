@@ -63,7 +63,8 @@ class CaseForm(ModelForm):
         widgets = {
             'title': TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Заголовок кейса'
+                'placeholder': 'Заголовок кейса',
+                'id': 'title'
             }),
             'img': FileInput(
                 attrs={

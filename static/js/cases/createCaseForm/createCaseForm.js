@@ -1,66 +1,71 @@
-var a = 0;
+var i = 0;
 
 function addImg(){
-    if(a == 0 && document.getElementById('img_1').value == ''){
+    if(i == 0 && document.getElementById('img_1').value == ''){
         alert('Вы не выбрали изображение!')
     }
-    else if(a == 1 && document.getElementById('img_2').value == ''){
+    else if(i == 1 && document.getElementById('img_2').value == ''){
         alert('Вы не выбрали изображение!')
     }
-    else if(a == 2 && document.getElementById('img_3').value == ''){
+    else if(i == 2 && document.getElementById('img_3').value == ''){
         alert('Вы не выбрали изображение!')
     }
-    else if(a == 3 && document.getElementById('img_4').value == ''){
+    else if(i == 3 && document.getElementById('img_4').value == ''){
         alert('Вы не выбрали изображение!')
     }
-    else if(a == 4 && document.getElementById('img_5').value == ''){
+    else if(i == 4 && document.getElementById('img_5').value == ''){
         alert('Вы не выбрали изображение!')
     }
     else{
 
-        if(a == 0){
+        if(i == 0){
             el = document.getElementById('img_1').value;
-            var b = el.split('\\')[2];
+            var spl = el.split('\\')[2];
+            
+            title = document.getElementById('title').value;
+            spl = '<img src="/media/cases/case_' + title + '/' + spl + '">'
     
-            b = '<img src="/media/case/' + b + '">'
-    
-            text = document.getElementById('description').value + '\n' + '\n' + b + '\n' + '\n';
+            text = document.getElementById('description').value + '\n' + '\n' + spl + '\n' + '\n';
             document.getElementById('description').value = text;
         }
-        else if(a == 1){
+        else if(i == 1){
             el = document.getElementById('img_2').value;
-            var b = el.split('\\')[2];
+            var spl = el.split('\\')[2];
     
-            b = '<img src="/media/case/' + b + '">'
+            title = document.getElementById('title').value;
+            spl = '<img src="/media/cases/case_' + title + '/' + spl + '">'
     
-            text = document.getElementById('description').value + '\n' + '\n' + b + '\n' + '\n';
+            text = document.getElementById('description').value + '\n' + '\n' + spl + '\n' + '\n';
             document.getElementById('description').value = text;
         }
-        else if(a == 2){
+        else if(i == 2){
             el = document.getElementById('img_3').value;
-            var b = el.split('\\')[2];
+            var spl = el.split('\\')[2];
     
-            b = '<img src="/media/case/' + b + '">'
+            title = document.getElementById('title').value;
+            spl = '<img src="/media/cases/case_' + title + '/' + spl + '">'
     
-            text = document.getElementById('description').value + '\n' + '\n' + b + '\n' + '\n';
+            text = document.getElementById('description').value + '\n' + '\n' + spl + '\n' + '\n';
             document.getElementById('description').value = text;
         }
-        else if(a == 3){
+        else if(i == 3){
             el = document.getElementById('img_4').value;
-            var b = el.split('\\')[2];
+            var spl = el.split('\\')[2];
     
-            b = '<img src="/media/case/' + b + '">'
+            title = document.getElementById('title').value;
+            spl = '<img src="/media/cases/case_' + title + '/' + spl + '">'
     
-            text = document.getElementById('description').value + '\n' + '\n' + b + '\n' + '\n';
+            text = document.getElementById('description').value + '\n' + '\n' + spl + '\n' + '\n';
             document.getElementById('description').value = text;
         }
-        else if(a == 4){
+        else if(i == 4){
             el = document.getElementById('img_5').value;
-            var b = el.split('\\')[2];
+            var spl = el.split('\\')[2];
     
-            b = '<img src="/media/case/' + b + '">'
+            title = document.getElementById('title').value;
+            spl = '<img src="/media/cases/case_' + title + '/' + spl + '">'
     
-            text = document.getElementById('description').value + '\n' + '\n' + b + '\n' + '\n';
+            text = document.getElementById('description').value + '\n' + '\n' + spl + '\n' + '\n';
             document.getElementById('description').value = text;
         }
 
@@ -74,20 +79,20 @@ function showAddImg(){
     if(document.getElementById('img_1').value != ''){
         document.getElementById('img_1').style.display = "none";
         document.getElementById('img_2').style.display = "block";
-        a = 1;
+        i = 1;
     }
     if((document.getElementById('img_1').value != '') && 
             (document.getElementById('img_2').value != '')){
         document.getElementById('img_2').style.display = "none";
         document.getElementById('img_3').style.display = "block";
-        a = 2;
+        i = 2;
     }
     if(document.getElementById('img_1').value != '' && 
             document.getElementById('img_2').value != '' && 
             document.getElementById('img_3').value != ''){
         document.getElementById('img_3').style.display = "none";
         document.getElementById('img_4').style.display = "block";
-        a = 3;
+        i = 3;
     }
     if(document.getElementById('img_1').value != '' && 
             document.getElementById('img_2').value != '' && 
@@ -95,7 +100,7 @@ function showAddImg(){
             document.getElementById('img_4').value != ''){
         document.getElementById('img_4').style.display = "none";
         document.getElementById('img_5').style.display = "block";
-        a = 4;
+        i = 4;
     }
     document.getElementById('addImg').style.display  = "block";
 }

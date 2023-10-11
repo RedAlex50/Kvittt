@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.base import View
 from django.http import HttpResponse
-from .models import Case, CaseBlock, New
+from .models import Case, New
 from transliterate import translit, get_available_language_codes
 from .forms import NewForm, CaseForm
 from pathlib import Path
@@ -49,7 +49,6 @@ class CasePage(View):
             return redirect('error')
 
         data = Case.objects.filter(id = id)
-        caseBlocks = CaseBlock.objects.filter(fk = id)
         
         try:
             if(titleForURL != translit(data[0].title.replace(' ', '-'), language_code='ru', reversed=True)):
@@ -60,7 +59,6 @@ class CasePage(View):
         context = {
             'titleForURL': titleForURL,
             'data' : data,
-            'caseBlocks': caseBlocks
         }
         return render(request, "cases/caseObject/caseObject.html", context=context)
     def post(self, request, id, titleForURL):
@@ -73,7 +71,6 @@ class CasePage(View):
             return redirect('error')
 
         data = Case.objects.filter(id = id)
-        caseBlocks = CaseBlock.objects.filter(fk = id)
         
         try:
             if(titleForURL != translit(data[0].title.replace(' ', '-'), language_code='ru', reversed=True)):
@@ -84,7 +81,6 @@ class CasePage(View):
         context = {
             'titleForURL': titleForURL,
             'data' : data,
-            'caseBlocks': caseBlocks
         }
         return render(request, "cases/caseObject/caseObject.html", context=context)
     
@@ -127,32 +123,25 @@ class CreateNew(View):
 class CreateCase(View):
     def get(self, request):
         error = ''
+        titleError = ''
+        titleErrorBool = False
+        cases = Case.objects.all()
         if request.method == 'POST':
             form = CaseForm(request.POST, request.FILES)            
-            if form.is_valid():
-                form.save()
-                return redirect('cases')
-            else:
-                error = "Форма заполнена некорректно!"
-
-        form = CaseForm()
-
-        data = {
-            'form': form,
-            'error': error,
-        }
-        return render(request, "cases/createCaseForm/createCaseForm.html", data)
-    def post(self, request):
-        error = ''
-        titleError = ''
-        if request.method == 'POST':
-            form = CaseForm(request.POST, request.FILES)
             if form.is_valid():
                 if ('/' in str(form.cleaned_data['title'])) | ('(' in str(form.cleaned_data['title'])) | (')' in str(form.cleaned_data['title'])) | ('*' in str(form.cleaned_data['title'])) | ('^' in str(form.cleaned_data['title'])) | ('/' in str(form.cleaned_data['title'])) | ('+' in str(form.cleaned_data['title'])):
                     titleError = "Не используйте символы: /, (, ), *, ^, /, +"    
                 else:
-                    form.save()
-                    return redirect('cases')
+                    for el in cases:
+                        print(el.title)
+                        if str(form.cleaned_data['title']) == el.title:
+                            titleErrorBool = True
+                    
+                    if titleErrorBool == True:
+                        titleError = 'Кейс с таким именем уже существует!'
+                    else:
+                        form.save()
+                        return redirect('cases')
             else:
                 error = "Форма заполнена некорректно!"
 
@@ -164,3 +153,47 @@ class CreateCase(View):
             'error': error,
         }
         return render(request, "cases/createCaseForm/createCaseForm.html", data)
+    def post(self, request):
+        error = ''
+        titleError = ''
+        titleErrorBool = False
+        cases = Case.objects.all()
+        if request.method == 'POST':
+            form = CaseForm(request.POST, request.FILES)
+            if form.is_valid():
+                if ('/' in str(form.cleaned_data['title'])) | ('(' in str(form.cleaned_data['title'])) | (')' in str(form.cleaned_data['title'])) | ('*' in str(form.cleaned_data['title'])) | ('^' in str(form.cleaned_data['title'])) | ('/' in str(form.cleaned_data['title'])) | ('+' in str(form.cleaned_data['title'])):
+                    titleError = "Не используйте символы: /, (, ), *, ^, /, +"    
+                else:
+                    for el in cases:
+                        print(el.title)
+                        if str(form.cleaned_data['title']) == el.title:
+                            titleErrorBool = True
+                    
+                    if titleErrorBool == True:
+                        titleError = 'Кейс с таким именем уже существует!'
+                    else:
+                        form.save()
+                        return redirect('cases')
+            else:
+                error = "Форма заполнена некорректно!"
+
+        form = CaseForm()
+
+        data = {
+            'titleError': titleError,
+            'form': form,
+            'error': error,
+        }
+        return render(request, "cases/createCaseForm/createCaseForm.html", data)
+
+def delete_new_function(request, id):
+    # OrderSparePart is the Model of which the object is present
+    ob = New.objects.get(id=id)
+    ob.delete()
+    return redirect('blog') # for best results, redirect to the same page from where delete function is called
+
+def delete_case_function(request, id):
+    # OrderSparePart is the Model of which the object is present
+    ob = Case.objects.get(id=id)
+    ob.delete()
+    return redirect('cases') # for best results, redirect to the same page from where delete function is called

@@ -56,6 +56,11 @@
                     </div>
                 </div>
                 <hr width="500" align="left" size="0" style="border: 2px solid #222222; border-radius: 3px;">
+                
+                <form action="{% url 'delete_new' id=obj.id %}" method="post">
+                    {% csrf_token %}
+                    <button class="btn" type="submit" >Удалить</button>
+                </form>
             {% endfor %}
         </div>
 
