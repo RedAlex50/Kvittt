@@ -11,4 +11,5 @@ urlpatterns = [
     path('cases/createCase', views.CreateCase.as_view(), name="createCaseForm"),
     path('page-delete-new/<int:id>', views.delete_new_function, name='delete_new'),
     path('page-delete-case/<int:id>', views.delete_case_function, name='delete_case'),
+    path("blog/(<id>)<titleNewForURL>", views.NewPage.as_view(), name="newPage"),
 ]

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Конкретный кейс{% endblock %}
+
+{% block main %}
+{% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/blog/blig.css' %}">
+
+    
+    <div class="content">
+        <div class="page_links">
+            <a href="{% url 'main' %}">Главная страница</a>
+            <span class="page_arrow">→</span>
+            <a href="{% url 'blog' %}">Блог></a>
+            <span class="page_arrow">→</span>
+            <a href="">Новость</a>
+        </div>
+
+        
+
+        {% for el in data %}
+            {% if obj.img_1 != "" %}
+                    <img src="/media/{{ el.img_1 }}">
+                {% endif %}
+                {% if obj.img_2 != "" %}
+                    <img src="/media/{{ el.img_2 }}">
+                {% endif %}
+                {% if obj.img_3 != "" %}
+                    <img src="/media/{{ el.img_3 }}">
+                {% endif %}
+                {% if obj.img_4 != "" %}
+                    <img src="/media/{{ el.img_4 }}">
+                {% endif %}
+                {% if obj.img_5 != "" %}
+                    <img src="/media/{{ el.img_5 }}">
+            {% endif %}
+            <div class="page_header h-1">{% autoescape off %}{{ el.title | linebreaks }}{% endautoescape %}</div>
+            <div class="case_text text_32">{% autoescape off %}{{ el.text | linebreaks }}{% endautoescape %}</div>
+        {% endfor %}
+
+    </div>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="{% static 'js/blog/blog.js' %}"></script>
+
+{% endblock %}

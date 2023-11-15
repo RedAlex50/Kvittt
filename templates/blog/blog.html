@@ -23,46 +23,50 @@
             <a href="/cases">блог</a>
         </div>
 
-        <div class="blogs">
-            {% for obj in news %}
-                <div class="blog_page">
-                    <div class="blog_img">
-                        {% if obj.img_1 != "" %}
-                            <img src="/media/{{ obj.img_1 }}">
-                        {% endif %}
-                        {% if obj.img_2 != "" %}
-                            <img src="/media/{{ obj.img_2 }}">
-                        {% endif %}
-                        {% if obj.img_3 != "" %}
-                            <img src="/media/{{ obj.img_3 }}">
-                        {% endif %}
-                        {% if obj.img_4 != "" %}
-                            <img src="/media/{{ obj.img_4 }}">
-                        {% endif %}
-                        {% if obj.img_5 != "" %}
-                            <img src="/media/{{ obj.img_5 }}">
-                        {% endif %}
-                    </div>
-                    <div class="blog_header">
-                        {{ obj.title }}
-                    </div>
-            
-                    <div class="blog_text">
-                        {{ obj.text }}
-                    </div>
-            
-                    <div class="blog_date">
-                        {{ obj.date }}
-                    </div>
-                </div>
-                <hr width="500" align="left" size="0" style="border: 2px solid #222222; border-radius: 3px;">
+        
+            <div class="blogs">
+                {% for obj in news %}
+                <a href='{% url "newPage" id=obj.id titleNewForURL=obj.titleNewForURL %}' class="cases_card">
+                    <div class="blog_page">
+                        <div class="blog_img">
+                            {% if obj.img_1 != "" %}
+                                <img src="/media/{{ obj.img_1 }}">
+                            {% endif %}
+                            {% if obj.img_2 != "" %}
+                                <img src="/media/{{ obj.img_2 }}">
+                            {% endif %}
+                            {% if obj.img_3 != "" %}
+                                <img src="/media/{{ obj.img_3 }}">
+                            {% endif %}
+                            {% if obj.img_4 != "" %}
+                                <img src="/media/{{ obj.img_4 }}">
+                            {% endif %}
+                            {% if obj.img_5 != "" %}
+                                <img src="/media/{{ obj.img_5 }}">
+                            {% endif %}
+                        </div>
+                        <div class="blog_header">
+                            {{ obj.title }}
+                        </div>
                 
-                <form action="{% url 'delete_new' id=obj.id %}" method="post">
-                    {% csrf_token %}
-                    <button class="btn" type="submit" >Удалить</button>
-                </form>
-            {% endfor %}
-        </div>
+                        <div class="blog_text">
+                            {{ obj.text }}
+                        </div>
+                
+                        <div class="blog_date">
+                            {{ obj.date }}
+                        </div>
+                    </div>
+                    <hr width="500" align="left" size="0" style="border: 2px solid #222222; border-radius: 3px;">
+                </a>
+                    <form action="{% url 'delete_new' id=obj.id %}" method="post">
+                        {% csrf_token %}
+                        <button class="btn" type="submit" >Удалить</button>
+                    </form>
+                
+                {% endfor %}
+            </div>
+        
 
     </div>
 

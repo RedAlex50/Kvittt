@@ -22,6 +22,7 @@ class Case(models.Model):
     
 class New(models.Model):
     title = models.CharField("Название Новости", max_length=255, default='')
+    titleNewForURL = models.CharField("Преобразование в URL", max_length=255, default='', blank=True)
     date = models.DateTimeField("Время поста", null=True, auto_now_add=True)
     img_1 = models.ImageField("Изображение 1", upload_to='news', blank=True)
     img_2 = models.ImageField("Изображение 2", upload_to='news', blank=True)

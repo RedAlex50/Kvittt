@@ -28,6 +28,12 @@ class Cases(View):
 class Blog(View):
     def get(self, request):
         news = New.objects.all()
+
+        i=0
+        for el in news:
+            news[i].titleNewForURL = translit(news[i].title.replace(' ', '-'), language_code='ru', reversed=True)
+            i += 1
+
         data = {
             'news': news,
         }
@@ -197,3 +203,49 @@ def delete_case_function(request, id):
     ob = Case.objects.get(id=id)
     ob.delete()
     return redirect('cases') # for best results, redirect to the same page from where delete function is called
+
+class NewPage(View):
+    def get(self, request, id, titleNewForURL):
+        id = int(id)
+        titleNewForURL = str(titleNewForURL)
+        data = None
+
+
+        if(id == None):
+            return redirect('error')
+
+        data = New.objects.filter(id = id)
+        
+        try:
+            if(titleNewForURL != translit(data[0].title.replace(' ', '-'), language_code='ru', reversed=True)):
+                return redirect('error')
+        except:
+            return redirect('error')   
+
+        context = {
+            'titleNewForURL': titleNewForURL,
+            'data' : data,
+        }
+        return render(request, "blog/new.html", context=context)
+    def post(self, request, id, titleNewForURL):
+        id = int(id)
+        titleNewForURL = str(titleNewForURL)
+        data = None
+
+
+        if(id == None):
+            return redirect('error')
+
+        data = New.objects.filter(id = id)
+        
+        try:
+            if(titleNewForURL != translit(data[0].title.replace(' ', '-'), language_code='ru', reversed=True)):
+                return redirect('error')
+        except:
+            return redirect('error')   
+
+        context = {
+            'titleNewForURL': titleNewForURL,
+            'data' : data,
+        }
+        return render(request, "blog/new.html", context=context)

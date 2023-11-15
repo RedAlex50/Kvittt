@@ -20,6 +20,7 @@
         
 
         {% for el in data %}
+            
             <div class="page_header h-1">{% autoescape off %}{{ el.title | linebreaks }}{% endautoescape %}</div>
             <div class="case_text text_32">{% autoescape off %}{{ el.description | linebreaks }}{% endautoescape %}</div>
         {% endfor %}
