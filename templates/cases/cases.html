@@ -7,21 +7,53 @@
 
     <link rel="stylesheet" href="{% static 'css/cases/cases.css' %}">
 
-    <a style="position:fixed; background-color: aquamarine; height: 30px;
-    width: 200px; border: 3px; border-radius: 20%; margin-top: -3%; margin-left: 82%;
-    color: black; text-decoration: none; text-align: center;" href="{% url 'createCaseForm' %}">Добавить кейс</a>
+
+    {% if user.is_authenticated  %}
 
     <div class="content">
-        <div class="page_header h-1">Кейсы</div>
-        <div class="page_links">
-            <a href="/">Главная страница</a>
-            <span class="page_arrow">→</span>
-            <a href="/cases">кейсы</a>
+        
+        <div class="cases_navbar">
+            <div class="page_header h-1">Кейсы</div>
+            <div class="page_links">
+                <a href="/">Главная страница</a>
+                <span class="page_arrow">→</span>
+                <a href="/cases">кейсы</a>
+            </div>
+        </div>
+
+        <div class="cases">
+            <a class="add_new_btn text_32" href="{% url 'createCaseForm' %}">Добавить кейс</a>
+            <div class="cases_grid">
+                {% for obj in cases %}
+            
+                <a href='{% url "casePage" id=obj.id titleForURL=obj.titleForURL %}' class="cases_card">
+                    <div class="cases_img">
+                        <img src="/media/{{ obj.img }}" height="294px" width="294px">
+                    </div>
+                    <div class="cases_title">
+                        <div id="{{ obj.id }}">{{ obj.title }}</div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    {% else %}
+
+    <div class="content">
+
+        <div class="cases_navbar">
+            <div class="page_header h-1">Кейсы</div>
+            <div class="page_links">
+                <a href="/">Главная страница</a>
+                <span class="page_arrow">→</span>
+                <a href="/cases">кейсы</a>
+            </div>
         </div>
 
         <div class="cases_grid">
             {% for obj in cases %}
-            
             <a href='{% url "casePage" id=obj.id titleForURL=obj.titleForURL %}' class="cases_card">
                 <div class="cases_img">
                     <img src="/media/{{ obj.img }}" height="294px" width="294px">
@@ -30,11 +62,11 @@
                     <div id="{{ obj.id }}">{{ obj.title }}</div>   
                 </div>
             </a>    
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
-</div>
 
-
+    {% endif %}
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <script src="{% static 'js/cases/cases.js' %}"></script>

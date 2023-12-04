@@ -98,4 +98,18 @@
     .contacts_links a img{
         height: 50px;
     }
+
+    .nav_link{ 
+        text-decoration: none;
+        color: #222222;
+        padding: 10%;
+        border: 1px solid transparent;
+        border-radius: 10px;
+    }
+    
+    .nav_link:hover{
+        padding: 0;
+        border-color: #b8b8b8;
+        transition: 0.3s;    
+    }
 }

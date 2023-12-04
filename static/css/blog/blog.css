@@ -1,3 +1,7 @@
+.page_links{
+    margin-bottom: 60px;
+}
+
 .page_links a{
     color: #B5B5B5;
     font-size: 16px;
@@ -17,6 +21,23 @@
 
 .page_arrow{
     color: #B5B5B5;
+}
+
+
+.add_new_btn{
+    margin-left: 36px;
+    padding: 4px;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    color: #B5B5B5;
+    border: 1px solid white;
+    border-radius: 8px;
+}
+
+.add_new_btn:hover{
+    border: 1px solid #B5B5B5;
+    transition: 0.2s;
 }
 
 .blogs{

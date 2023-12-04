@@ -7,23 +7,22 @@
 
     <link rel="stylesheet" href="{% static 'css/blog/blog.css' %}">
 
-    
 
     {% if user.is_authenticated  %}
 
-    <a style="position:fixed; background-color: aquamarine; height: 30px;
-        width: 200px; border: 3px; border-radius: 20%; margin-top: -3%; margin-left: 82%;
-        color: black; text-decoration: none; text-align: center;" href="{% url 'createNewForm' %}">Добавить новость</a>
-
     <div class="content">
-        <div class="page_header h-1">Блог</div>
-        <div class="page_links">
-            <a href="/">Главная страница</a>
-            <span class="page_arrow">→</span>
-            <a href="/cases">блог</a>
+            
+        <div class="blog_navbar">
+            <div class="page_header h-1">Блог</div>
+            <div class="page_links">
+                <a href="/">Главная страница</a>
+                <span class="page_arrow">→</span>
+                <a href="/cases">блог</a>
+            </div>
         </div>
-
+        
         <div class="blogs">
+            <a class="add_new_btn text_32" href="{% url 'createNewForm' %}">Добавить новость</a>
             {% for obj in news %}
                 <div class="blog_page">
                     <div class="blog_img">
@@ -63,7 +62,54 @@
 
     {% else %}
 
-    
+    <div class="content">
+            
+        <div class="blog_navbar">
+            <div class="page_header h-1">Блог</div>
+            <div class="page_links">
+                <a href="/">Главная страница</a>
+                <span class="page_arrow">→</span>
+                <a href="/cases">блог</a>
+            </div>
+        </div>
+        
+        <div class="blogs">
+            {% for obj in news %}
+                <div class="blog_page">
+                    <div class="blog_img">
+                        {% if obj.img_1 != "" %}
+                            <img src="/media/{{ obj.img_1 }}">
+                        {% endif %}
+                        {% if obj.img_2 != "" %}
+                            <img src="/media/{{ obj.img_2 }}">
+                        {% endif %}
+                        {% if obj.img_3 != "" %}
+                            <img src="/media/{{ obj.img_3 }}">
+                        {% endif %}
+                        {% if obj.img_4 != "" %}
+                            <img src="/media/{{ obj.img_4 }}">
+                        {% endif %}
+                        {% if obj.img_5 != "" %}
+                            <img src="/media/{{ obj.img_5 }}">
+                        {% endif %}
+                    </div>
+                    <div class="blog_header">
+                        {{ obj.title }}
+                    </div>
+            
+                    <div class="blog_text">
+                        {{ obj.text }}
+                    </div>
+            
+                    <div class="blog_date">
+                        {{ obj.date }}
+                    </div>
+                </div>
+                <hr width="500" align="left" size="0" style="border: 2px solid #222222; border-radius: 3px;">
+            {% endfor %}
+        </div>
+
+    </div>
 
     {% endif %}
     
